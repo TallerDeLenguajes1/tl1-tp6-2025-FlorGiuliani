@@ -74,26 +74,29 @@ do {
                 num1 = ingresarNumeros();
                 num2 = ingresarNumeros();
                 resultado = sumar(num1, num2);
+                Console.Write("El resultado es: " + resultado);
                 break;
             case 2:
                 num1 = ingresarNumeros();
                 num2 = ingresarNumeros();
                 resultado = restar(num1, num2);
+                Console.Write("El resultado es: " + resultado);
                 break;
             case 3:
                 num1 = ingresarNumeros();
                 num2 = ingresarNumeros();
                 resultado = multiplicar(num1, num2);
+                Console.Write("El resultado es: " + resultado);
                 break;
             case 4:
                 num1 = ingresarNumeros();
                 num2 = ingresarNumeros();
                 resultado = dividir(num1, num2);
+                Console.Write("El resultado es: " + resultado);
                 break;
             default:
                 break;
         }
-        Console.Write("El resultado es: " + resultado);
     }
 
-} while (repetir());
+} while (respuestaNumero != 5 && repetir());
