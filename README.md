@@ -60,3 +60,67 @@ Ejemplos:
     Hola, {nombre}.
     Tienes {edad} años.
     Tu carpeta está en: C:\Usuarios\{nombre}\";
+
+
+
+    ¿Qué son las expresiones regulares?
+Las expresiones regulares (o regex, por "regular expressions") son patrones utilizados para buscar, validar o manipular texto. Son muy potentes para encontrar coincidencias dentro de cadenas, como verificar si una cadena cumple con cierto formato (ej: un correo electrónico, un número de teléfono, etc.).
+
+Las expresiones regulares están compuestas por símbolos y caracteres especiales que representan patrones de búsqueda. Algunos ejemplos:
+
+\d → Cualquier dígito (0–9)
+
+\w → Cualquier letra o número (carácter alfanumérico)
+
+. → Cualquier carácter excepto salto de línea
+
+* → Cero o más repeticiones
+
++ → Una o más repeticiones
+
+^ → Inicio de línea
+
+$ → Fin de línea
+
+Por ejemplo, el patrón ^\d{3}-\d{2}-\d{4}$ valida un número de seguridad social con el formato 123-45-6789.
+
+    ¿Funcionan solo en C#?
+No. Las expresiones regulares son un estándar que se utiliza en muchos lenguajes de programación y herramientas: Python, JavaScript, Java, PHP, Ruby, Perl, etc.
+Incluso en editores de texto como VSCode o Notepad++ para búsqueda avanzada
+
+    ¿En qué casos son útiles?
+
+- Validar formatos de entrada:
+Verificar si un correo electrónico es válido
+Comprobar si un número de teléfono tiene el formato correcto
+Validar contraseñas seguras (longitud, símbolos, etc.)
+
+- Extraer información de un texto:
+Sacar todas las direcciones de email de un archivo de texto
+Obtener números de factura en un reporte
+Leer fechas dentro de un documento
+
+- Reemplazar texto:
+Cambiar todos los dígitos por * en un texto para ocultar información
+Limpiar espacios dobles o caracteres innecesarios
+Reformatear fechas de DD/MM/YYYY a YYYY-MM-DD
+
+    ¿Cómo se usan en C#?
+
+Ejemplo 1:
+using System.Text.RegularExpressions;
+string email = "ejemplo@correo.com";
+bool esValido = Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+Console.WriteLine(esValido); // True si es válido
+
+Ejemplo 2:
+string texto = "Hay 3 perros y 14 gatos";
+MatchCollection numeros = Regex.Matches(texto, @"\d+");
+foreach (Match match in numeros) {
+    Console.WriteLine(match.Value); // Imprime 3 y luego 14
+}
+
+Ejemplo 3:
+string texto = "Hola mundo";
+string ocultado = Regex.Replace(texto, @"[a-zA-Z]", "*");
+Console.WriteLine(ocultado); // **** *****
